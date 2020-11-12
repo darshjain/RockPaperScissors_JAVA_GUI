@@ -1,17 +1,9 @@
-/* Rock-Paper-Scissors V2 
- *    (By Thinh "Bingo" Ngo)
- * 
- *  A GUI based version of the classic game.
- */
-
-
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.*; 
 import javax.swing.*;
 
 public class RockPaperScissors {
-
 	/* 
 	 * 1 is rock
 	 * 2 is paper
@@ -65,18 +57,10 @@ public class RockPaperScissors {
 		l1.setBounds(300, 140, 128, 200);
 		panel.add(l1);//creating a question button
 
-
-		JButton b4 = new JButton("Cheat");
-		b4.setBounds(350, 430, 80, 30); //create a code button, this button will give you an automatic win
-
-		JButton b5 = new JButton("Quit"); //quit
-		b5.setBounds(260, 430, 80, 30);
-
 		panel.add(b1);
 		panel.add(b2);
 		panel.add(b3);
-		panel.add(b4);
-		panel.add(b5); //place button on panel
+		
 
 		b1.addActionListener( //next three button will listen for which play pick and calculate the win in computeWinner
 
@@ -105,32 +89,9 @@ public class RockPaperScissors {
 				}
 		);
 
-		b4.addActionListener(
-
-				new ActionListener() {//cheat button, hit the guy and get a win
-					public void actionPerformed( ActionEvent event ) {
-						win=win+1;
-						total=total+1;
-
-						JOptionPane.showMessageDialog(null,"Rack up another win!"+"\nWin/Loss rate: " + win+"/"+total+"\nTie: "+tie,"Cheater do prosper", 0, new ImageIcon(System.getProperty("user.dir")+"/image/4.jpg"));
-
-					}
-				}
-		);
-		b5.addActionListener( //quit the game and show three beat up guys
-
-				new ActionListener() {
-					public void actionPerformed( ActionEvent event ) {
-						String text="Paper: Thank goodness you stop playing!\nThe rock keep trying to break free\n and the scissors keep cutting me!\nRock: Let me out!\nScissors: Damn rock! Snip snip.\n\nAuthor: Thank you for playing and I have\ntake these guys to the hospital now.";
-						JOptionPane.showMessageDialog(null,text, "Thank you for playing!", 0, new ImageIcon(System.getProperty("user.dir")+"/image/6.gif"));
-						System.exit(0);
-					}
-				}
-		);
 
 		frame.setSize(500, 500); 
 		frame.setVisible(true); 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //set frame size and the game begins!		
 	}
 
 	public static void computeWinner(int x){ // computing the winner
