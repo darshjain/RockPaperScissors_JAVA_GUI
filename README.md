@@ -1,4 +1,4 @@
-# RockPaperScissors in JAVA GUI
+# Rock Paper Scissors in JAVA GUI
 
 Its a game of rock, paper and scissors made using Swing Class in JAVA and its based on graphical user interface<br>
 
