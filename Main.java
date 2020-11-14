@@ -139,7 +139,15 @@ class Game {
 		image_computer.setBounds(300, 100, 200, 250);
 		score_panel.add(image_computer);
 
-		score_frame.setSize(600, 400);
+		JLabel label_score1 = new JLabel("Win / Total : " + score_win + "/" + score_total);
+		label_score1.setBounds(175, 200, 150, 350);
+		score_panel.add(label_score1);
+
+		JLabel label_score2 = new JLabel("Tie: " + score_tie);
+		label_score2.setBounds(175, 210, 125, 370);
+		score_panel.add(label_score2);
+
+		score_frame.setSize(600, 450);
 		score_frame.setVisible(true);
 	}
 }
