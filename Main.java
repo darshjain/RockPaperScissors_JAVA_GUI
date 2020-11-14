@@ -10,10 +10,8 @@ public class Main {
 	}
 }
 
-class Game {
-	/*
-	 * 1 is rock 2 is paper 3 is scissors
-	 */
+class Game {	
+	 //1 is rock 2 is paper 3 is scissors
 
 	static int score_human;
 	static int score_win = 0;
@@ -103,17 +101,36 @@ class Game {
 				score_tie += 1;
 		}
 		if (score_human == 1){ 
-			label_winner = "Human wins!  ";
+			label_winner = "   Human wins!";
 			score_human = 0;
 			score_win += 1;
 			score_total += 1;
 		} 
 		else if (score_human == 2) {
-			label_winner = "It is a tie!  ";
+			label_winner = "   Noone wins!";
 			score_human = 0;
 		} else {
-			label_winner = "Computer wins!  ";
+			label_winner = "   Computer wins!";
 			score_total += 1;
 		}
+
+		JFrame score_frame = new JFrame("Rock, Scissors, Paper");
+		Container score_panel = score_frame.getContentPane();
+		score_panel.setLayout(null);
+
+		JLabel label_result = new JLabel(label_choice + label_winner);
+		label_result.setBounds(75, 10, 300, 35);
+		score_panel.add(label_result);
+
+		JLabel label_main_human = new JLabel("Human's Choice");
+		label_main_human.setBounds(40, 35, 150, 35);
+		score_panel.add(label_main_human);
+
+		JLabel label_main_computer = new JLabel("Computer's Choice");
+		label_main_computer.setBounds(215, 35, 150, 35);
+		score_panel.add(label_main_computer);
+
+		score_frame.setSize(400, 270);
+		score_frame.setVisible(true);
 	}
 }
