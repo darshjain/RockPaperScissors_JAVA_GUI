@@ -28,11 +28,10 @@ class Game {
 		Container panel_main = frame_main.getContentPane();
 		panel_main.setLayout(null);
 
-		String[] icon_path = new String[3]; // creating icon string name so we can place the directory in with little
-											// effort
-		int[] icon_bound = new int[3]; // same idea
+		String[] icon_path = new String[3]; 
+		int[] icon_bound = new int[3]; 
 
-		for (int i = 0; i <= 2; i++) { // creating the condtions
+		for (int i = 0; i <= 2; i++) {
 			icon_path[i] = System.getProperty("user.dir") + "/Assets/images/" + i + ".png";
 			icon_bound[i] = 40 + 250 * i;
 		}
@@ -47,7 +46,7 @@ class Game {
 
 		JButton btn_scissors = new JButton(" ", new ImageIcon(icon_path[2]));
 		btn_scissors.setBackground(Color.white);
-		btn_scissors.setBounds(icon_bound[2], 40, 200, 250);// creating three buttons
+		btn_scissors.setBounds(icon_bound[2], 40, 200, 250);
 
 		panel_main.add(btn_rock);
 		panel_main.add(btn_scissors);
