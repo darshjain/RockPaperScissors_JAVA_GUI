@@ -119,18 +119,27 @@ class Game {
 		score_panel.setLayout(null);
 
 		JLabel label_result = new JLabel(label_choice + label_winner);
-		label_result.setBounds(75, 10, 300, 35);
+		label_result.setBounds(150, 10, 300, 35);
 		score_panel.add(label_result);
 
-		JLabel label_main_human = new JLabel("Human's Choice");
-		label_main_human.setBounds(40, 35, 150, 35);
-		score_panel.add(label_main_human);
+		JLabel label_title_human = new JLabel("Human's Choice");
+		label_title_human.setBounds(50, 35, 150, 35);
+		score_panel.add(label_title_human);
 
-		JLabel label_main_computer = new JLabel("Computer's Choice");
-		label_main_computer.setBounds(215, 35, 150, 35);
-		score_panel.add(label_main_computer);
+		JLabel label_title_computer = new JLabel("Computer's Choice");
+		label_title_computer.setBounds(350, 35, 150, 35);
+		score_panel.add(label_title_computer);
 
-		score_frame.setSize(400, 270);
+		JLabel image_human = new JLabel(new ImageIcon(System.getProperty("user.dir") + "/Assets/images/" + (choice_human - 1) + ".png"));
+		image_human.setBounds(10, 100, 200, 250);
+		score_panel.add(image_human);
+
+		JLabel image_computer = new JLabel(
+				new ImageIcon(System.getProperty("user.dir") + "/Assets/images/" + (choice_computer - 1) + "c.png"));
+		image_computer.setBounds(300, 100, 200, 250);
+		score_panel.add(image_computer);
+
+		score_frame.setSize(600, 400);
 		score_frame.setVisible(true);
 	}
 }
