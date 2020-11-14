@@ -2,30 +2,30 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.*; 
 import javax.swing.*;
-
-public class RockPaperScissors {
+public class RockPaperScissors{
+	public static void main(String[] args) {
+		Game.gamePanel();
+		Game.introductionPanel();
+	}
+}
+class Game {
 	/* 
 	 * 1 is rock
 	 * 2 is paper
 	 * 3 is scissors
 	 */
 
-	static int humanWon; // use for statistic
-	static int win=0;
-	static int total=0;
+	static int score_human; // use for statistic
+	static int score_win=0;
+	static int score_total=0;
 	static int tie=0;
 
-	public static void main(String[] args){ // main
-		gamePanel();// launch main game
-		introductionPanel(); // launch instruction
-	}
-
-	private static void introductionPanel(){ // give the instruction to the game
+	public static void introductionPanel(){ // give the instruction to the game
 		String text="Rock, Paper, Scissors!  This game is fairly simple.\nSimply pick your hands whenever you are ready.\nRock beats scissors, scissors beat paper\nand paper wrap the rock. Yes paper beats rock.";
 		JOptionPane.showMessageDialog(null,text, "How to play!", 0, new ImageIcon(System.getProperty("user.dir")+"/image/5.gif"));
 	}
 
-	private static void gamePanel(){ // the main game panel
+	public static void gamePanel(){ // the main game panel
 
 		JFrame frame = new JFrame("Rock, Scissors, Paper");  //the main frame of the game 
 
@@ -95,7 +95,7 @@ public class RockPaperScissors {
 	}
 
 	public static void computeWinner(int x){ // computing the winner
-		int computerChoice=computerRandomChoice();
+		int computerChoice=(int)(Math.random()*3)+1;
 		int humanChoice=x;
 		String text,text1="";
 		String winningCombination= ""+Math.min(computerChoice, humanChoice)+Math.max(computerChoice, humanChoice);
@@ -104,32 +104,32 @@ public class RockPaperScissors {
 
 		case 12:
 			text = "Paper wins!";
-			if(humanChoice==2) humanWon=1;
+			if(humanChoice==2) score_human=1;
 			break;
 		case 13:
 			text = "Rock wins!";
-			if(humanChoice==1) humanWon=1;
+			if(humanChoice==1) score_human=1;
 			break;
 		case 23:
 			text = "Scissors wins!";
-			if(humanChoice==3) humanWon=1;
+			if(humanChoice==3) score_human=1;
 			break;
 		default: text="It is a tie!";
-		humanWon=2;
+		score_human=2;
 		tie=tie+1;
 		}
 
-		if(humanWon==1){
+		if(score_human==1){
 			text1="Human wins!  ";
-			humanWon=0;
-			win=win+1;
-			total=total+1;
-		}else if(humanWon==2){
+			score_human=0;
+			score_win=score_win+1;
+			score_total=score_total+1;
+		}else if(score_human==2){
 			text1="It is a tie!  ";
-			humanWon=0;		
+			score_human=0;		
 		}else{
 			text1="Computer wins!  ";
-			total=total+1;
+			score_total=score_total+1;
 
 		}
 
@@ -162,7 +162,7 @@ public class RockPaperScissors {
 		l4.setBounds(200, 100,170, 60);
 		panel.add(l4);
 
-		JLabel l5 = new JLabel("Win/Loss rate: " + win+"/"+total);
+		JLabel l5 = new JLabel("Win/Loss rate: " + score_win+"/"+score_total);
 		l5.setBounds(125, 25, 150, 350);
 		panel.add(l5);
 
@@ -176,11 +176,5 @@ public class RockPaperScissors {
 
 
 	}
-
-	public static int computerRandomChoice(){// creating a random choice of rock paper or scissors by the computer
-		int result=(int)(Math.random()*3)+1;		
-		return result;
-	}
-
 }
 
