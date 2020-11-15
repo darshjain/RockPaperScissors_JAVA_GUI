@@ -146,6 +146,16 @@ class Game {
 		label_score2.setBounds(175, 210, 125, 370);
 		score_panel.add(label_score2);
 
+		JButton btn_ok = new JButton("OK");
+		btn_ok.setBackground(Color.white);
+		btn_ok.setBounds(410, 360, 100, 50);
+		score_panel.add(btn_ok);
+
+		btn_ok.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				System.exit(1);
+			}
+		});
 		score_frame.setSize(600, 450);
 		score_frame.setVisible(true);
 	}
