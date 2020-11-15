@@ -153,7 +153,7 @@ class Game {
 
 		btn_ok.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				System.exit(1);
+				score_frame.dispose();
 			}
 		});
 		score_frame.setSize(600, 450);
