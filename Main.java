@@ -10,8 +10,8 @@ public class Main {
 	}
 }
 
-class Game {	
-	 //1 is rock 2 is paper 3 is scissors
+class Game {
+	// 1 is rock 2 is paper 3 is scissors
 
 	static int score_human;
 	static int score_win = 0;
@@ -28,8 +28,8 @@ class Game {
 		Container panel_main = frame_main.getContentPane();
 		panel_main.setLayout(null);
 
-		String[] icon_path = new String[3]; 
-		int[] icon_bound = new int[3]; 
+		String[] icon_path = new String[3];
+		int[] icon_bound = new int[3];
 
 		for (int i = 0; i <= 2; i++) {
 			icon_path[i] = System.getProperty("user.dir") + "/Assets/images/" + i + ".png";
@@ -76,7 +76,7 @@ class Game {
 	public static void compute_winner(int choice_human) {
 		int choice_computer = (int) (Math.random() * 3) + 1;
 		String label_choice, label_winner = "";
-		String combo_winner=""+Math.min(choice_computer, choice_human) + Math.max(choice_computer, choice_human);
+		String combo_winner = "" + Math.min(choice_computer, choice_human) + Math.max(choice_computer, choice_human);
 		switch (Integer.parseInt(combo_winner)) {
 
 			case 12:
@@ -99,13 +99,12 @@ class Game {
 				score_human = 2;
 				score_tie += 1;
 		}
-		if (score_human == 1){ 
+		if (score_human == 1) {
 			label_winner = "   Human wins!";
 			score_human = 0;
 			score_win += 1;
 			score_total += 1;
-		} 
-		else if (score_human == 2) {
+		} else if (score_human == 2) {
 			label_winner = "   Noone wins!";
 			score_human = 0;
 		} else {
@@ -129,7 +128,8 @@ class Game {
 		label_title_computer.setBounds(350, 35, 150, 35);
 		score_panel.add(label_title_computer);
 
-		JLabel image_human = new JLabel(new ImageIcon(System.getProperty("user.dir") + "/Assets/images/" + (choice_human - 1) + ".png"));
+		JLabel image_human = new JLabel(
+				new ImageIcon(System.getProperty("user.dir") + "/Assets/images/" + (choice_human - 1) + ".png"));
 		image_human.setBounds(10, 100, 200, 250);
 		score_panel.add(image_human);
 
