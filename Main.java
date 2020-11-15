@@ -32,7 +32,7 @@ class Game {
 		int[] icon_bound = new int[3];
 
 		for (int i = 0; i <= 2; i++) {
-			icon_path[i] = System.getProperty("user.dir") + "/Assets/images/" + i + ".png";
+			icon_path[i] = System.getProperty("user.dir") + "/Asset/images/" + i + ".png";
 			icon_bound[i] = 40 + 250 * i;
 		}
 
@@ -129,12 +129,12 @@ class Game {
 		score_panel.add(label_title_computer);
 
 		JLabel image_human = new JLabel(
-				new ImageIcon(System.getProperty("user.dir") + "/Assets/images/" + (choice_human - 1) + ".png"));
+				new ImageIcon(System.getProperty("user.dir") + "/Asset/images/" + (choice_human - 1) + ".png"));
 		image_human.setBounds(10, 100, 200, 250);
 		score_panel.add(image_human);
 
 		JLabel image_computer = new JLabel(
-				new ImageIcon(System.getProperty("user.dir") + "/Assets/images/" + (choice_computer - 1) + "c.png"));
+				new ImageIcon(System.getProperty("user.dir") + "/Asset/images/" + (choice_computer - 1) + "c.png"));
 		image_computer.setBounds(300, 100, 200, 250);
 		score_panel.add(image_computer);
 
