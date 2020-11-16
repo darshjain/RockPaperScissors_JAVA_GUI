@@ -4,8 +4,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.text.AttributeSet.ColorAttribute;
 
-//import sun.awt.AWTAccessor.ContainerAccessor;
-
 public class Main {
 	public static void main(String[] args) {
 		Game.panel_game();
@@ -30,7 +28,6 @@ class Game {
 		JFrame frame_main = new JFrame("Rock, Scissors, Paper");
 		frame_main.getContentPane().setBackground(Color.BLACK);
 		Container panel_main = frame_main.getContentPane();
-		// smyJFrame.getContentPane().setBackground(Color.BLACK);
 		panel_main.setLayout(null);
 
 		String[] icon_path = new String[3];
@@ -42,15 +39,15 @@ class Game {
 		}
 
 		JButton btn_rock = new JButton(" ", new ImageIcon(icon_path[0]));
-		btn_rock.setBackground(Color.red); // ************** */
+		btn_rock.setBackground(Color.red); 
 		btn_rock.setBounds(40, icon_bound[0], 200, 250);
 
 		JButton btn_paper = new JButton(" ", new ImageIcon(icon_path[1]));
-		btn_paper.setBackground(Color.yellow); // ************************** */
+		btn_paper.setBackground(Color.yellow); 
 		btn_paper.setBounds(icon_bound[1], 40, 200, 250);
 
 		JButton btn_scissors = new JButton(" ", new ImageIcon(icon_path[2]));
-		btn_scissors.setBackground(Color.blue); /******************* */
+		btn_scissors.setBackground(Color.blue); 
 		btn_scissors.setBounds(icon_bound[2], 40, 200, 250);
 
 		panel_main.add(btn_rock);
@@ -118,7 +115,7 @@ class Game {
 		}
 
 		JFrame score_frame = new JFrame("Rock, Scissors, Paper");
-		score_frame.getContentPane().setBackground(Color.cyan); // ************************************ */
+		score_frame.getContentPane().setBackground(Color.cyan); 
 		Container score_panel = score_frame.getContentPane();
 		score_panel.setLayout(null);
 
@@ -153,7 +150,7 @@ class Game {
 		score_panel.add(label_score2);
 
 		JButton btn_ok = new JButton("OK");
-		btn_ok.setBackground(Color.green); // ************************** */
+		btn_ok.setBackground(Color.green); 
 		btn_ok.setBounds(410, 360, 100, 50);
 		score_panel.add(btn_ok);
 
