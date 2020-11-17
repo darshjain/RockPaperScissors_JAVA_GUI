@@ -37,22 +37,29 @@ class Game {
 			icon_path[i] = System.getProperty("user.dir") + "/images/" + i + ".png";
 			icon_bound[i] = 40 + 250 * i;
 		}
+		JLabel title_main=new JLabel("Rock Paper Scissors");
+		title_main.setBounds(240,20 ,400,40);
+		title_main.setFont (new java.awt.Font("Arial", java.awt.Font.BOLD, 22));
+		title_main.setForeground(Color.WHITE);
+
 
 		JButton btn_rock = new JButton(" ", new ImageIcon(icon_path[0]));
 		btn_rock.setBackground(Color.red); 
-		btn_rock.setBounds(40, icon_bound[0], 200, 250);
+		btn_rock.setBounds(icon_bound[0],100, 200, 250);
 
 		JButton btn_paper = new JButton(" ", new ImageIcon(icon_path[1]));
 		btn_paper.setBackground(Color.yellow); 
-		btn_paper.setBounds(icon_bound[1], 40, 200, 250);
+		btn_paper.setBounds(icon_bound[1], 100, 200, 250);
 
 		JButton btn_scissors = new JButton(" ", new ImageIcon(icon_path[2]));
 		btn_scissors.setBackground(Color.blue); 
-		btn_scissors.setBounds(icon_bound[2], 40, 200, 250);
+		btn_scissors.setBounds(icon_bound[2], 100, 200, 250);
 
 		panel_main.add(btn_rock);
 		panel_main.add(btn_scissors);
 		panel_main.add(btn_paper);
+		panel_main.add(title_main);
+
 		btn_rock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compute_winner(1);
