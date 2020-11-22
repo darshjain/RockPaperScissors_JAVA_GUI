@@ -7,8 +7,11 @@ Its a game of rock, paper and scissors made using Swing Class in JAVA and its ba
 $ git clone https://github.com/darshjain/RockPaperScissors_JAVA_GUI.git
 ```
 # Program Screenshots-
+<img src="Assets/main.png" height="300px"> <br>
+<img src="Assets/score.png" height="300px">
+<br>
 
-### Contributors -
+# Contributors -
 
 Darsh Jain<br>
 Ankita Upadhyay<br>
