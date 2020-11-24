@@ -1,168 +1,225 @@
+/* Rock-Paper-Scissors V2 
+ *    (By Thinh "Bingo" Ngo)
+ * 
+ *  A GUI based version of the classic game.
+ */
+
+
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.event.*;
+import java.awt.event.*; 
 import javax.swing.*;
-import javax.swing.text.AttributeSet.ColorAttribute;
 
-//import sun.awt.AWTAccessor.ContainerAccessor;
+public class RockPaperScissors {
 
-public class Main {
-	public static void main(String[] args) {
-		Game.panel_game();
-		Game.panel_introduction();
+	/* 
+	 * 1 is rock
+	 * 2 is paper
+	 * 3 is scissors
+	 */
+
+	static int humanWon; // use for statistic
+	static int win=0;
+	static int total=0;
+	static int tie=0;
+
+	public static void main(String[] args){ // main
+		gamePanel();// launch main game
+		introductionPanel(); // launch instruction
 	}
+
+	private static void introductionPanel(){ // give the instruction to the game
+		String text="Rock, Paper, Scissors!  This game is fairly simple.\nSimply pick your hands whenever you are ready.\nRock beats scissors, scissors beat paper\nand paper wrap the rock. Yes paper beats rock.";
+		JOptionPane.showMessageDialog(null,text, "How to play!", 0, new ImageIcon(System.getProperty("user.dir")+"/image/5.gif"));
+	}
+
+	private static void gamePanel(){ // the main game panel
+
+		JFrame frame = new JFrame("Rock, Scissors, Paper");  //the main frame of the game 
+
+		Container panel = frame.getContentPane();  // creating a container panel, so we can place buttons where we pleased
+		panel.setLayout(null); 
+
+		String[] iconString= new String[3]; // creating icon string name so we can place the directory in with little effort
+		int[] boundInt= new int[3]; // same idea
+
+		for(int i=0; i<=2; i++){ // creating the condtions
+			iconString[i]=System.getProperty("user.dir")+"/image/"+i+".jpg";
+			boundInt[i]=40+150*i;
+		}
+
+		JButton b1 = new JButton (" ", new ImageIcon(iconString[0]));
+		b1.setBackground(Color.white);
+		b1.setBounds(40,boundInt[0],150,100);
+
+
+		JButton b2 = new JButton (" ", new ImageIcon(iconString[1]));
+		b2.setBackground(Color.white);
+		b2.setBounds(40,boundInt[1],150,100);
+
+		JButton b3 = new JButton (" ", new ImageIcon(iconString[2]));
+		b3.setBackground(Color.white);
+		b3.setBounds(40,boundInt[2],150,100);//creating three buttons
+
+		JLabel l1 = new JLabel(new ImageIcon(System.getProperty("user.dir")+"/image/3.jpg"));
+		l1.setBounds(300, 140, 128, 200);
+		panel.add(l1);//creating a question button
+
+
+		JButton b4 = new JButton("Cheat");
+		b4.setBounds(350, 430, 80, 30); //create a code button, this button will give you an automatic win
+
+		JButton b5 = new JButton("Quit"); //quit
+		b5.setBounds(260, 430, 80, 30);
+
+		panel.add(b1);
+		panel.add(b2);
+		panel.add(b3);
+		panel.add(b4);
+		panel.add(b5); //place button on panel
+
+		b1.addActionListener( //next three button will listen for which play pick and calculate the win in computeWinner
+
+				new ActionListener() {
+					public void actionPerformed( ActionEvent event ) {
+						computeWinner(1);
+					}
+				}
+		);
+
+		b2.addActionListener(
+
+				new ActionListener() {
+					public void actionPerformed( ActionEvent event ) {
+						computeWinner(2);
+					}
+				}
+		);
+
+		b3.addActionListener(
+
+				new ActionListener() {
+					public void actionPerformed( ActionEvent event ) {
+						computeWinner(3);
+					}
+				}
+		);
+
+		b4.addActionListener(
+
+				new ActionListener() {//cheat button, hit the guy and get a win
+					public void actionPerformed( ActionEvent event ) {
+						win=win+1;
+						total=total+1;
+
+						JOptionPane.showMessageDialog(null,"Rack up another win!"+"\nWin/Loss rate: " + win+"/"+total+"\nTie: "+tie,"Cheater do prosper", 0, new ImageIcon(System.getProperty("user.dir")+"/image/4.jpg"));
+
+					}
+				}
+		);
+		b5.addActionListener( //quit the game and show three beat up guys
+
+				new ActionListener() {
+					public void actionPerformed( ActionEvent event ) {
+						String text="Paper: Thank goodness you stop playing!\nThe rock keep trying to break free\n and the scissors keep cutting me!\nRock: Let me out!\nScissors: Damn rock! Snip snip.\n\nAuthor: Thank you for playing and I have\ntake these guys to the hospital now.";
+						JOptionPane.showMessageDialog(null,text, "Thank you for playing!", 0, new ImageIcon(System.getProperty("user.dir")+"/image/6.gif"));
+						System.exit(0);
+					}
+				}
+		);
+
+		frame.setSize(500, 500); 
+		frame.setVisible(true); 
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //set frame size and the game begins!		
+	}
+
+	public static void computeWinner(int x){ // computing the winner
+		int computerChoice=computerRandomChoice();
+		int humanChoice=x;
+		String text,text1="";
+		String winningCombination= ""+Math.min(computerChoice, humanChoice)+Math.max(computerChoice, humanChoice);
+
+		switch(Integer.parseInt(winningCombination)){
+
+		case 12:
+			text = "Paper wins!";
+			if(humanChoice==2) humanWon=1;
+			break;
+		case 13:
+			text = "Rock wins!";
+			if(humanChoice==1) humanWon=1;
+			break;
+		case 23:
+			text = "Scissors wins!";
+			if(humanChoice==3) humanWon=1;
+			break;
+		default: text="It is a tie!";
+		humanWon=2;
+		tie=tie+1;
+		}
+
+		if(humanWon==1){
+			text1="Human wins!  ";
+			humanWon=0;
+			win=win+1;
+			total=total+1;
+		}else if(humanWon==2){
+			text1="It is a tie!  ";
+			humanWon=0;		
+		}else{
+			text1="Computer wins!  ";
+			total=total+1;
+
+		}
+
+
+		JFrame frame = new JFrame("Rock, Scissors, Paper"); 
+		Container panel = frame.getContentPane(); 
+		panel.setLayout(null); 
+
+
+		JLabel l0 = new JLabel(text1+text);
+		l0.setBounds(75, 10, 300, 35);
+		panel.add(l0);
+
+
+		//show the result in a new splash screen
+		
+		JLabel l1 = new JLabel("Human's Choice");
+		l1.setBounds(40, 35, 150, 35);
+		panel.add(l1);
+
+		JLabel l2 = new JLabel("Computer's Choice");
+		l2.setBounds(215, 35, 150, 35);
+		panel.add(l2);
+
+		JLabel l3 = new JLabel(new ImageIcon(System.getProperty("user.dir")+"/image/"+(humanChoice-1)+".jpg"));
+		l3.setBounds(10, 100, 170, 60);
+		panel.add(l3);
+
+		JLabel l4 = new JLabel(new ImageIcon(System.getProperty("user.dir")+"/image/"+(computerChoice-1)+".jpg"));
+		l4.setBounds(200, 100,170, 60);
+		panel.add(l4);
+
+		JLabel l5 = new JLabel("Win/Loss rate: " + win+"/"+total);
+		l5.setBounds(125, 25, 150, 350);
+		panel.add(l5);
+
+		JLabel l6 = new JLabel("Tie: "+tie);
+		l6.setBounds(125, 30, 125, 370);
+		panel.add(l6);
+
+		frame.setSize(400, 270); 
+		frame.setVisible(true); 		
+
+
+
+	}
+
+	public static int computerRandomChoice(){// creating a random choice of rock paper or scissors by the computer
+		int result=(int)(Math.random()*3)+1;		
+		return result;
+	}
+
 }
 
-class Game {
-	// 1 is rock 2 is paper 3 is scissors
-
-	static int score_human;
-	static int score_win = 0;
-	static int score_total = 0;
-	static int score_tie = 0;
-
-	public static void panel_introduction() { // give the instruction to the game
-		String info_text = "Rock, Paper, Scissors!  This game is fairly simple.\nSimply pick your hands whenever you are ready.\nRock beats scissors, scissors beat paper\nand paper wrap the rock. Yes paper beats rock.";
-		JOptionPane.showMessageDialog(null, info_text, "How to play!", 1);
-	}
-
-	public static void panel_game() {
-		JFrame frame_main = new JFrame("Rock, Scissors, Paper");
-		frame_main.getContentPane().setBackground(Color.BLACK);
-		Container panel_main = frame_main.getContentPane();
-		// smyJFrame.getContentPane().setBackground(Color.BLACK);
-		panel_main.setLayout(null);
-
-		String[] icon_path = new String[3];
-		int[] icon_bound = new int[3];
-
-		for (int i = 0; i <= 2; i++) {
-			icon_path[i] = System.getProperty("user.dir") + "/images/" + i + ".png";
-			icon_bound[i] = 40 + 250 * i;
-		}
-
-		JButton btn_rock = new JButton(" ", new ImageIcon(icon_path[0]));
-		btn_rock.setBackground(Color.red); // ************** */
-		btn_rock.setBounds(40, icon_bound[0], 200, 250);
-
-		JButton btn_paper = new JButton(" ", new ImageIcon(icon_path[1]));
-		btn_paper.setBackground(Color.yellow); // ************************** */
-		btn_paper.setBounds(icon_bound[1], 40, 200, 250);
-
-		JButton btn_scissors = new JButton(" ", new ImageIcon(icon_path[2]));
-		btn_scissors.setBackground(Color.blue); /******************* */
-		btn_scissors.setBounds(icon_bound[2], 40, 200, 250);
-
-		panel_main.add(btn_rock);
-		panel_main.add(btn_scissors);
-		panel_main.add(btn_paper);
-		btn_rock.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				compute_winner(1);
-			}
-		});
-
-		btn_paper.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				compute_winner(2);
-			}
-		});
-
-		btn_scissors.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				compute_winner(3);
-			}
-		});
-
-		frame_main.setSize(800, 400);
-		frame_main.setVisible(true);
-	}
-
-	public static void compute_winner(int choice_human) {
-		int choice_computer = (int) (Math.random() * 3) + 1;
-		String label_choice, label_winner = "";
-		String combo_winner = "" + Math.min(choice_computer, choice_human) + Math.max(choice_computer, choice_human);
-		switch (Integer.parseInt(combo_winner)) {
-
-			case 12:
-				label_choice = "Paper wins!";
-				if (choice_human == 2)
-					score_human = 1;
-				break;
-			case 13:
-				label_choice = "Rock wins!";
-				if (choice_human == 1)
-					score_human = 1;
-				break;
-			case 23:
-				label_choice = "Scissors wins!";
-				if (choice_human == 3)
-					score_human = 1;
-				break;
-			default:
-				label_choice = "It is a tie!";
-				score_human = 2;
-				score_tie += 1;
-		}
-		if (score_human == 1) {
-			label_winner = "   Human wins!";
-			score_human = 0;
-			score_win += 1;
-			score_total += 1;
-		} else if (score_human == 2) {
-			label_winner = "   Noone wins!";
-			score_human = 0;
-		} else {
-			label_winner = "   Computer wins!";
-			score_total += 1;
-		}
-
-		JFrame score_frame = new JFrame("Rock, Scissors, Paper");
-		score_frame.getContentPane().setBackground(Color.cyan); // ************************************ */
-		Container score_panel = score_frame.getContentPane();
-		score_panel.setLayout(null);
-
-		JLabel label_result = new JLabel(label_choice + label_winner);
-		label_result.setBounds(150, 10, 300, 35);
-		score_panel.add(label_result);
-
-		JLabel label_title_human = new JLabel("Human's Choice");
-		label_title_human.setBounds(50, 35, 150, 35);
-		score_panel.add(label_title_human);
-
-		JLabel label_title_computer = new JLabel("Computer's Choice");
-		label_title_computer.setBounds(350, 35, 150, 35);
-		score_panel.add(label_title_computer);
-
-		JLabel image_human = new JLabel(
-				new ImageIcon(System.getProperty("user.dir") + "/images/" + (choice_human - 1) + ".png"));
-		image_human.setBounds(10, 100, 200, 250);
-		score_panel.add(image_human);
-
-		JLabel image_computer = new JLabel(
-				new ImageIcon(System.getProperty("user.dir") + "/images/" + (choice_computer - 1) + "c.png"));
-		image_computer.setBounds(300, 100, 200, 250);
-		score_panel.add(image_computer);
-
-		JLabel label_score1 = new JLabel("Win / Total : " + score_win + "/" + score_total);
-		label_score1.setBounds(175, 200, 150, 350);
-		score_panel.add(label_score1);
-
-		JLabel label_score2 = new JLabel("Tie: " + score_tie);
-		label_score2.setBounds(175, 210, 125, 370);
-		score_panel.add(label_score2);
-
-		JButton btn_ok = new JButton("OK");
-		btn_ok.setBackground(Color.green); // ************************** */
-		btn_ok.setBounds(410, 360, 100, 50);
-		score_panel.add(btn_ok);
-
-		btn_ok.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				score_frame.dispose();
-			}
-		});
-		score_frame.setSize(600, 450);
-		score_frame.setVisible(true);
-	}
-}
