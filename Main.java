@@ -37,28 +37,44 @@ class Game {
 			icon_path[i] = System.getProperty("user.dir") + "/images/" + i + ".png";
 			icon_bound[i] = 40 + 250 * i;
 		}
-		JLabel title_main=new JLabel("Rock Paper Scissors");
-		title_main.setBounds(240,20 ,400,40);
-		title_main.setFont (new java.awt.Font("Arial", java.awt.Font.BOLD, 22));
+		JLabel title_main = new JLabel("Rock Paper Scissors");
+		title_main.setBounds(240, 20, 400, 40);
+		title_main.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 22));
 		title_main.setForeground(Color.WHITE);
 
-
 		JButton btn_rock = new JButton(" ", new ImageIcon(icon_path[0]));
-		btn_rock.setBackground(Color.red); 
-		btn_rock.setBounds(icon_bound[0],100, 200, 250);
+		btn_rock.setBackground(Color.red);
+		btn_rock.setBounds(icon_bound[0], 100, 200, 250);
 
 		JButton btn_paper = new JButton(" ", new ImageIcon(icon_path[1]));
-		btn_paper.setBackground(Color.yellow); 
+		btn_paper.setBackground(Color.yellow);
 		btn_paper.setBounds(icon_bound[1], 100, 200, 250);
 
 		JButton btn_scissors = new JButton(" ", new ImageIcon(icon_path[2]));
-		btn_scissors.setBackground(Color.blue); 
+		btn_scissors.setBackground(Color.blue);
 		btn_scissors.setBounds(icon_bound[2], 100, 200, 250);
 
 		panel_main.add(btn_rock);
 		panel_main.add(btn_scissors);
 		panel_main.add(btn_paper);
 		panel_main.add(title_main);
+
+		JToggleButton toggle_button = new JToggleButton("Click Me");
+		ItemListener itemListener = new ItemListener() {
+			public void itemStateChanged(ItemEvent itemEvent) {
+				int state = itemEvent.getStateChange();
+				if (state == ItemEvent.SELECTED) {
+					frame_main.getContentPane().setBackground(Color.WHITE);
+					title_main.setForeground(Color.BLACK);
+				} else {
+					frame_main.getContentPane().setBackground(Color.BLACK);
+					title_main.setForeground(Color.WHITE);
+				}
+			}
+		};
+		toggle_button.addItemListener(itemListener);
+		toggle_button.setBounds(200, 20, 200, 50);
+		panel_main.add(toggle_button);
 
 		btn_rock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -77,7 +93,7 @@ class Game {
 				compute_winner(3);
 			}
 		});
-
+		frame_main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame_main.setSize(800, 400);
 		frame_main.setVisible(true);
 	}
@@ -122,7 +138,7 @@ class Game {
 		}
 
 		JFrame score_frame = new JFrame("Rock, Scissors, Paper");
-		score_frame.getContentPane().setBackground(Color.cyan); 
+		score_frame.getContentPane().setBackground(Color.cyan);
 		Container score_panel = score_frame.getContentPane();
 		score_panel.setLayout(null);
 
@@ -157,7 +173,7 @@ class Game {
 		score_panel.add(label_score2);
 
 		JButton btn_ok = new JButton("OK");
-		btn_ok.setBackground(Color.green); 
+		btn_ok.setBackground(Color.green);
 		btn_ok.setBounds(410, 360, 100, 50);
 		score_panel.add(btn_ok);
 
