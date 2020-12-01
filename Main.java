@@ -72,7 +72,6 @@ class Game {
 		toggle_button.addItemListener(itemListener);
 		toggle_button.setBounds(570, 20, 150, 40);
 
-		
 		panel_main.add(toggle_button);
 		panel_main.add(btn_rock);
 		panel_main.add(btn_scissors);
