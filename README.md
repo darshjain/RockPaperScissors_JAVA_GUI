@@ -8,9 +8,9 @@ It also has Dark Mode Functionality added using toggle switch<br>
 $ git clone https://github.com/darshjain/RockPaperScissors_JAVA_GUI.git
 ```
 # Program Screenshots-
-<img src="Assets/main_dark.png" height="300px"> <br>
-<img src="Assets/main_light.png" height="300px"><br>
-<img src="Assets/score.png" height="300px">
+<img src="Assets/main_dark.png" height="200px">
+<img src="Assets/main_light.png" height="200px"><br>
+<img src="Assets/score.png" height="200px">
 <br>
 
 # Contributors -
