@@ -12,7 +12,7 @@ public class Main {
 }
 
 class Game {
-	// 1 is rock 2 is paper 3 is scissors
+	// 0 is rock 1 is paper 2 is scissors
 
 	static int score_human;
 	static int score_win = 0;
