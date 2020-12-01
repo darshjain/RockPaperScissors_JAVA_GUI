@@ -54,11 +54,6 @@ class Game {
 		btn_scissors.setBackground(Color.blue);
 		btn_scissors.setBounds(icon_bound[2], 100, 200, 250);
 
-		panel_main.add(btn_rock);
-		panel_main.add(btn_scissors);
-		panel_main.add(btn_paper);
-		panel_main.add(title_main);
-
 		JToggleButton toggle_button = new JToggleButton("Light Mode");
 		ItemListener itemListener = new ItemListener() {
 			public void itemStateChanged(ItemEvent itemEvent) {
@@ -76,8 +71,14 @@ class Game {
 		};
 		toggle_button.addItemListener(itemListener);
 		toggle_button.setBounds(570, 20, 150, 40);
-		panel_main.add(toggle_button);
 
+		
+		panel_main.add(toggle_button);
+		panel_main.add(btn_rock);
+		panel_main.add(btn_scissors);
+		panel_main.add(btn_paper);
+		panel_main.add(title_main);
+		
 		btn_rock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compute_winner(1);
