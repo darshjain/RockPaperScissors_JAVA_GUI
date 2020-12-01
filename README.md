@@ -1,6 +1,7 @@
 # Rock Paper Scissors in JAVA GUI
 
 Its a game of rock, paper and scissors made using Swing Class in JAVA and its based on graphical user interface<br>
+It also has Dark Mode Functionality added using toggle switch<br>
 
 ```bash
 # To clone
