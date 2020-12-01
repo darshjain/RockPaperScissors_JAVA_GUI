@@ -59,21 +59,23 @@ class Game {
 		panel_main.add(btn_paper);
 		panel_main.add(title_main);
 
-		JToggleButton toggle_button = new JToggleButton("Click Me");
+		JToggleButton toggle_button = new JToggleButton("Light Mode");
 		ItemListener itemListener = new ItemListener() {
 			public void itemStateChanged(ItemEvent itemEvent) {
 				int state = itemEvent.getStateChange();
 				if (state == ItemEvent.SELECTED) {
 					frame_main.getContentPane().setBackground(Color.WHITE);
 					title_main.setForeground(Color.BLACK);
+					toggle_button.setText("Dark Mode");
 				} else {
 					frame_main.getContentPane().setBackground(Color.BLACK);
 					title_main.setForeground(Color.WHITE);
+					toggle_button.setText("Light Mode");
 				}
 			}
 		};
 		toggle_button.addItemListener(itemListener);
-		toggle_button.setBounds(200, 20, 200, 50);
+		toggle_button.setBounds(570, 20, 150, 40);
 		panel_main.add(toggle_button);
 
 		btn_rock.addActionListener(new ActionListener() {
