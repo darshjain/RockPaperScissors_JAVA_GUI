@@ -55,8 +55,7 @@ class Game {
 		btn_scissors.setBounds(icon_bound[2], 100, 200, 250);
 
 		JToggleButton toggle_button = new JToggleButton("Light Mode");
-		toggle_button.setForeground(Color.BLACK);
-		toggle_button.setBackground(Color.WHITE);
+
 		ItemListener itemListener = new ItemListener() {
 			public void itemStateChanged(ItemEvent itemEvent) {
 				int state = itemEvent.getStateChange();
@@ -64,14 +63,10 @@ class Game {
 					frame_main.getContentPane().setBackground(Color.WHITE);
 					title_main.setForeground(Color.BLACK);
 					toggle_button.setText("Dark Mode");
-					toggle_button.setForeground(Color.BLACK);
-					toggle_button.setBackground(Color.WHITE);
 				} else {
 					frame_main.getContentPane().setBackground(Color.BLACK);
 					title_main.setForeground(Color.WHITE);
 					toggle_button.setText("Light Mode");
-					toggle_button.setForeground(Color.WHITE);
-					toggle_button.setBackground(Color.BLACK);
 				}
 			}
 		};
