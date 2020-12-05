@@ -55,6 +55,8 @@ class Game {
 		btn_scissors.setBounds(icon_bound[2], 100, 200, 250);
 
 		JToggleButton toggle_button = new JToggleButton("Light Mode");
+		toggle_button.setForeground(Color.BLACK);
+		toggle_button.setBackground(Color.WHITE);
 		ItemListener itemListener = new ItemListener() {
 			public void itemStateChanged(ItemEvent itemEvent) {
 				int state = itemEvent.getStateChange();
@@ -81,7 +83,7 @@ class Game {
 		panel_main.add(btn_scissors);
 		panel_main.add(btn_paper);
 		panel_main.add(title_main);
-		
+
 		btn_rock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compute_winner(1);
