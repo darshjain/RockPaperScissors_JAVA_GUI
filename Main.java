@@ -62,10 +62,14 @@ class Game {
 					frame_main.getContentPane().setBackground(Color.WHITE);
 					title_main.setForeground(Color.BLACK);
 					toggle_button.setText("Dark Mode");
+					toggle_button.setForeground(Color.WHITE);
+					toggle_button.setBackground(Color.BLACK);
 				} else {
 					frame_main.getContentPane().setBackground(Color.BLACK);
 					title_main.setForeground(Color.WHITE);
 					toggle_button.setText("Light Mode");
+					toggle_button.setForeground(Color.WHITE);
+					toggle_button.setBackground(Color.BLACK);
 				}
 			}
 		};
