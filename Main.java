@@ -193,7 +193,7 @@ class Game {
 				score_frame.dispose();
 			}
 		});
-		
+
 		score_frame.setSize(600, 450);
 		score_frame.setVisible(true);
 	}
