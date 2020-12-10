@@ -34,7 +34,7 @@ class Game {
 
 	public static void panel_game() {
 		JFrame frame_main = new JFrame("Rock, Scissors, Paper");
-		frame_main.getContentPane().setBackground(Color.BLACK);
+		//frame_main.getContentPane().setBackground(Color.BLACK);
 		Container panel_main = frame_main.getContentPane();
 		panel_main.setLayout(null);
 
@@ -48,7 +48,7 @@ class Game {
 		JLabel title_main = new JLabel("Rock Paper Scissors");
 		title_main.setBounds(240, 20, 400, 40);
 		title_main.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 22));
-		title_main.setForeground(Color.WHITE);
+		//title_main.setForeground(Color.WHITE);
 
 		JButton btn_rock = new JButton(" ", new ImageIcon(icon_path[0]));
 		btn_rock.setBackground(Color.red);
