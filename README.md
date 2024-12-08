@@ -12,8 +12,3 @@ $ git clone https://github.com/darshjain/RockPaperScissors_JAVA_GUI.git
 <img src="Assets/main_light.png" height="200px"><br>
 <img src="Assets/score.png" height="200px">
 <br>
-
-# Contributors -
-
-Darsh Jain<br>
-Ankita Upadhyay<br>
